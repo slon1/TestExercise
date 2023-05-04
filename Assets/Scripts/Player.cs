@@ -17,7 +17,9 @@ public class Player : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, position, Time.deltaTime * speed);
     }
     public void Move(Vector3 position) {
-        transform.position += position;
+        Vector2 viewPos = Camera.main.WorldToViewportPoint(transform.position+ position);        
+        if (viewPos.x > 0.05F && viewPos.x < 0.95F&&viewPos.y > 0.05F && viewPos.y < 0.95F)            
+            transform.position += position;
     }
     
     void Update()
